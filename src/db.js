@@ -1,7 +1,12 @@
 import pg from "pg";
+import dotenv from "dotenv";
 
-const {Poll} = pg;
+dotenv.config();
 
-const db = new Poll(process.env.DATABASE_URL);
+const {Pool} = pg;
+
+const db = new Pool({
+    connectionString: process.env.DATABASE_URL,
+});
 
 export default db;
